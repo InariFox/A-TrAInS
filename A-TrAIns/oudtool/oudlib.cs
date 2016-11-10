@@ -10,7 +10,10 @@ namespace oudtool
     public class oudlib
     {
         // クラス内共通データ
+
+        // 駅リスト
         private List<string> stations;
+        private string linename;
 
         public oudlib()
         {
@@ -18,8 +21,8 @@ namespace oudtool
         }
 
         // readメソッド
-        // - oudファイルを読み込んでstringデータとして保持
-        public bool read(StreamReader sr)
+        // - oudファイルを読み込んでデータを整形
+        public bool readOud(StreamReader sr)
         {
             // 読み込み処理フラグ
             // 読み込めなかったりOudiaのデータじゃなかったらfalseを返す
@@ -44,8 +47,7 @@ namespace oudtool
                     if (data.Contains("Rosenmei="))
                     {
                         string[] line = data.Split('=');
-                        stations.Add("路線名:" + line[1]);
-                        stations.Add("駅リスト：");
+                        linename = line[1];
                     }
 
                     // 駅名
@@ -64,7 +66,16 @@ namespace oudtool
             return result;
         }
 
-        public List<string> getlineinfo()
+        // getLinenameメソッド
+        // 読み込んだデータの路線名を返す
+        public string getLinename()
+        {
+            return linename;
+        }
+
+        // getStationsメソッド
+        // 読み込んだデータの駅リストを返す
+        public List<string> getStations()
         {
             return stations;
         }
