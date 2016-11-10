@@ -10,11 +10,13 @@ namespace A_TrAIns
     public partial class frmRough : Form
     {
         private oudlib ol;
+        private string title;
 
         public frmRough()
         {
             InitializeComponent();
             ol = new oudlib();
+            title = Text;
         }
 
         private bool is_oudia(string head)
@@ -44,26 +46,33 @@ namespace A_TrAIns
             {
                 // SJISを指定して読み込まないと文字化け起こすよ！
                 StreamReader data = new StreamReader(ofdOudia.OpenFile(), Encoding.GetEncoding("Shift_JIS"));
-                if (!ol.read(data))
+                if (!ol.readOud(data))
                 {
                     MessageBox.Show("Oudiaのデータではありません！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else {
-                    //tboxDiagram.Text = ol.load();
+                    // タイトルバーの設定
+                    Text = title + " - " + ofdOudia.FileName;
+
+                    // 路線データの取得
+                    tboxLineName.Text = ol.getLinename();
+
+                    // 駅リストの取得
+                    cboxStationList.Items.AddRange(ol.getStations().ToArray());
                 }
             }
         }
 
         // 路線データ表示
         // 路線名と駅リストをMessageBoxで表示する
-        private void btnShowInfo_Click(object sender, EventArgs e)
-        {
-            string[] info = ol.getlineinfo().ToArray();
-            for (int i = 0; i < info.Length; i++)
-            {
-                tboxDiagram.Text += info[i] + "\r\n";
-            }
+        //private void btnShowInfo_Click(object sender, EventArgs e)
+        //{
+        //    string[] info = ol.getlineinfo().ToArray();
+        //    for (int i = 0; i < info.Length; i++)
+        //    {
+        //        tboxDiagram.Text += info[i] + "\r\n";
+        //    }
 
-        }
+        //}
     }
 }

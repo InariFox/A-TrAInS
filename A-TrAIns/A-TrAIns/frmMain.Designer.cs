@@ -31,8 +31,15 @@
             this.ofdOudia = new System.Windows.Forms.OpenFileDialog();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnShowInfo = new System.Windows.Forms.Button();
-            this.tboxDiagram = new System.Windows.Forms.TextBox();
+            this.dgvDiagram = new System.Windows.Forms.DataGridView();
+            this.lblLineInfo = new System.Windows.Forms.Label();
+            this.lblDiaList = new System.Windows.Forms.Label();
+            this.tboxLineName = new System.Windows.Forms.TextBox();
+            this.cboxDiaList = new System.Windows.Forms.ComboBox();
+            this.lblStations = new System.Windows.Forms.Label();
+            this.cboxStationList = new System.Windows.Forms.ComboBox();
+            this.btnLoad = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagram)).BeginInit();
             this.SuspendLayout();
             // 
             // ofdOudia
@@ -43,7 +50,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(497, 12);
+            this.btnOpen.Location = new System.Drawing.Point(921, 12);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 1;
@@ -53,7 +60,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(497, 41);
+            this.btnExit.Location = new System.Drawing.Point(921, 41);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 2;
@@ -61,37 +68,94 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnShowInfo
+            // dgvDiagram
             // 
-            this.btnShowInfo.Location = new System.Drawing.Point(13, 12);
-            this.btnShowInfo.Name = "btnShowInfo";
-            this.btnShowInfo.Size = new System.Drawing.Size(109, 23);
-            this.btnShowInfo.TabIndex = 4;
-            this.btnShowInfo.Text = "路線データ表示";
-            this.btnShowInfo.UseVisualStyleBackColor = true;
-            this.btnShowInfo.Click += new System.EventHandler(this.btnShowInfo_Click);
+            this.dgvDiagram.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDiagram.Location = new System.Drawing.Point(12, 114);
+            this.dgvDiagram.Name = "dgvDiagram";
+            this.dgvDiagram.RowTemplate.Height = 21;
+            this.dgvDiagram.Size = new System.Drawing.Size(984, 603);
+            this.dgvDiagram.TabIndex = 3;
             // 
-            // tboxDiagram
+            // lblLineInfo
             // 
-            this.tboxDiagram.Location = new System.Drawing.Point(12, 71);
-            this.tboxDiagram.Multiline = true;
-            this.tboxDiagram.Name = "tboxDiagram";
-            this.tboxDiagram.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tboxDiagram.Size = new System.Drawing.Size(559, 278);
-            this.tboxDiagram.TabIndex = 3;
+            this.lblLineInfo.AutoSize = true;
+            this.lblLineInfo.Location = new System.Drawing.Point(28, 17);
+            this.lblLineInfo.Name = "lblLineInfo";
+            this.lblLineInfo.Size = new System.Drawing.Size(47, 12);
+            this.lblLineInfo.TabIndex = 4;
+            this.lblLineInfo.Text = "路線名：";
+            // 
+            // lblDiaList
+            // 
+            this.lblDiaList.AutoSize = true;
+            this.lblDiaList.Location = new System.Drawing.Point(12, 46);
+            this.lblDiaList.Name = "lblDiaList";
+            this.lblDiaList.Size = new System.Drawing.Size(63, 12);
+            this.lblDiaList.TabIndex = 5;
+            this.lblDiaList.Text = "ダイヤ選択：";
+            // 
+            // tboxLineName
+            // 
+            this.tboxLineName.Location = new System.Drawing.Point(81, 14);
+            this.tboxLineName.Name = "tboxLineName";
+            this.tboxLineName.ReadOnly = true;
+            this.tboxLineName.Size = new System.Drawing.Size(444, 19);
+            this.tboxLineName.TabIndex = 6;
+            // 
+            // cboxDiaList
+            // 
+            this.cboxDiaList.FormattingEnabled = true;
+            this.cboxDiaList.Location = new System.Drawing.Point(81, 43);
+            this.cboxDiaList.Name = "cboxDiaList";
+            this.cboxDiaList.Size = new System.Drawing.Size(444, 20);
+            this.cboxDiaList.TabIndex = 7;
+            // 
+            // lblStations
+            // 
+            this.lblStations.AutoSize = true;
+            this.lblStations.Location = new System.Drawing.Point(28, 81);
+            this.lblStations.Name = "lblStations";
+            this.lblStations.Size = new System.Drawing.Size(47, 12);
+            this.lblStations.TabIndex = 8;
+            this.lblStations.Text = "駅選択：";
+            // 
+            // cboxStationList
+            // 
+            this.cboxStationList.FormattingEnabled = true;
+            this.cboxStationList.Location = new System.Drawing.Point(81, 78);
+            this.cboxStationList.Name = "cboxStationList";
+            this.cboxStationList.Size = new System.Drawing.Size(444, 20);
+            this.cboxStationList.TabIndex = 9;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(540, 76);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 10;
+            this.btnLoad.Text = "読み込み";
+            this.btnLoad.UseVisualStyleBackColor = true;
             // 
             // frmRough
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.btnShowInfo);
-            this.Controls.Add(this.tboxDiagram);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.cboxStationList);
+            this.Controls.Add(this.lblStations);
+            this.Controls.Add(this.cboxDiaList);
+            this.Controls.Add(this.tboxLineName);
+            this.Controls.Add(this.lblDiaList);
+            this.Controls.Add(this.lblLineInfo);
+            this.Controls.Add(this.dgvDiagram);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOpen);
             this.MaximizeBox = false;
             this.Name = "frmRough";
-            this.Text = "A-TrAInsラフ用";
+            this.Text = "A-TrAIns";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDiagram)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,8 +165,14 @@
         private System.Windows.Forms.OpenFileDialog ofdOudia;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnShowInfo;
-        private System.Windows.Forms.TextBox tboxDiagram;
+        private System.Windows.Forms.DataGridView dgvDiagram;
+        private System.Windows.Forms.Label lblLineInfo;
+        private System.Windows.Forms.Label lblDiaList;
+        private System.Windows.Forms.TextBox tboxLineName;
+        private System.Windows.Forms.ComboBox cboxDiaList;
+        private System.Windows.Forms.Label lblStations;
+        private System.Windows.Forms.ComboBox cboxStationList;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
 
