@@ -4,18 +4,23 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using oudtool;
+using System.Data;
 
+// A_TrAIns
+// 2016-11-10 @ InariFox
 namespace A_TrAIns
 {
     public partial class frmRough : Form
     {
         private oudlib ol;
+        private diaman dm;
         private string title;
 
         public frmRough()
         {
             InitializeComponent();
             ol = new oudlib();
+            dm = new diaman();
             title = Text;
         }
 
@@ -59,6 +64,28 @@ namespace A_TrAIns
 
                     // 駅リストの取得
                     cboxStationList.Items.AddRange(ol.getStations().ToArray());
+
+                    // ダイヤグラムの取得
+                    Dictionary<string, DataSet> diagrams = ol.getDiagrams();
+                    dm.setDiagrams(diagrams);
+
+                    // ダイヤ一覧の取得
+                    cboxDiaList.Items.AddRange(dm.getDiagramNames());
+                }
+            }
+        }
+
+        // ダイヤグラムデータ読み込み
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            if ((cboxDiaList.SelectedIndex != -1) || (cboxFor.SelectedIndex != -1))
+            {
+                string dianame = cboxDiaList.SelectedItem.ToString();
+                DataSet ds = dm.getDiagram(dianame);
+                if (ds != null)
+                {
+                    DataTable dt = ds.Tables[cboxFor.SelectedIndex];
+                    dgvDiagram.DataSource = dt;
                 }
             }
         }
