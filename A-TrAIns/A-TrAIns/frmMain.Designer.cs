@@ -39,6 +39,8 @@
             this.lblStations = new System.Windows.Forms.Label();
             this.cboxStationList = new System.Windows.Forms.ComboBox();
             this.btnLoad = new System.Windows.Forms.Button();
+            this.lblFor = new System.Windows.Forms.Label();
+            this.cboxFor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagram)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +110,7 @@
             this.cboxDiaList.FormattingEnabled = true;
             this.cboxDiaList.Location = new System.Drawing.Point(81, 43);
             this.cboxDiaList.Name = "cboxDiaList";
-            this.cboxDiaList.Size = new System.Drawing.Size(444, 20);
+            this.cboxDiaList.Size = new System.Drawing.Size(255, 20);
             this.cboxDiaList.TabIndex = 7;
             // 
             // lblStations
@@ -136,12 +138,35 @@
             this.btnLoad.TabIndex = 10;
             this.btnLoad.Text = "読み込み";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // lblFor
+            // 
+            this.lblFor.AutoSize = true;
+            this.lblFor.Location = new System.Drawing.Point(366, 46);
+            this.lblFor.Name = "lblFor";
+            this.lblFor.Size = new System.Drawing.Size(59, 12);
+            this.lblFor.TabIndex = 11;
+            this.lblFor.Text = "方向選択：";
+            // 
+            // cboxFor
+            // 
+            this.cboxFor.FormattingEnabled = true;
+            this.cboxFor.Items.AddRange(new object[] {
+            "下り",
+            "上り"});
+            this.cboxFor.Location = new System.Drawing.Point(431, 43);
+            this.cboxFor.Name = "cboxFor";
+            this.cboxFor.Size = new System.Drawing.Size(94, 20);
+            this.cboxFor.TabIndex = 12;
             // 
             // frmRough
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.cboxFor);
+            this.Controls.Add(this.lblFor);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.cboxStationList);
             this.Controls.Add(this.lblStations);
@@ -173,6 +198,8 @@
         private System.Windows.Forms.Label lblStations;
         private System.Windows.Forms.ComboBox cboxStationList;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Label lblFor;
+        private System.Windows.Forms.ComboBox cboxFor;
     }
 }
 
