@@ -21,6 +21,7 @@ namespace oudtool
         // -- ダイヤ関係
         private Dictionary<string, DataSet> diagrams;
 
+        // コンストラクタ
         public oudlib()
         {
             stations = new List<string>();

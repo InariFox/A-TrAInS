@@ -41,6 +41,7 @@
             this.btnLoad = new System.Windows.Forms.Button();
             this.lblFor = new System.Windows.Forms.Label();
             this.cboxFor = new System.Windows.Forms.ComboBox();
+            this.btn_test = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagram)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,11 +161,22 @@
             this.cboxFor.Size = new System.Drawing.Size(94, 20);
             this.cboxFor.TabIndex = 12;
             // 
+            // btn_test
+            // 
+            this.btn_test.Location = new System.Drawing.Point(540, 75);
+            this.btn_test.Name = "btn_test";
+            this.btn_test.Size = new System.Drawing.Size(169, 23);
+            this.btn_test.TabIndex = 13;
+            this.btn_test.Text = "とりあえず再生";
+            this.btn_test.UseVisualStyleBackColor = true;
+            this.btn_test.Click += new System.EventHandler(this.btn_test_Click);
+            // 
             // frmRough
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btn_test);
             this.Controls.Add(this.cboxFor);
             this.Controls.Add(this.lblFor);
             this.Controls.Add(this.btnLoad);
@@ -200,6 +212,7 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Label lblFor;
         private System.Windows.Forms.ComboBox cboxFor;
+        private System.Windows.Forms.Button btn_test;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using oudtool;
 using System.Data;
+using YukarinTalk;
 
 // A_TrAIns
 // 2016-11-10 @ InariFox
@@ -94,6 +95,13 @@ namespace A_TrAIns
                     dgvDiagram.DataSource = dt;
                 }
             }
+        }
+
+        // ゆかりさんに読み上げテストしてもらう用の一時的な奴
+        private void btn_test_Click(object sender, EventArgs e)
+        {
+            yukalib yl = new yukalib();
+            yl.Play();
         }
 
         // 路線データ表示
