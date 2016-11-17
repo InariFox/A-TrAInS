@@ -50,6 +50,11 @@ namespace oudtool
             // ヘッダーチェックで問題なければとりあえず読み込む
             if (result)
             {
+                // データ格納先の再初期化
+                diagrams.Clear();
+                stations.Clear();
+                traintype.Clear();
+
                 // 読み込みできる文字がなくなるまで繰り返す
                 while (sr.Peek() >= 0)
                 {
@@ -94,19 +99,127 @@ namespace oudtool
                         DataSet ds = diagrams.Last().Value;
 
                         DataTable dt = new DataTable(data);
-                        //列の定義
+                        //基本列の定義
                         // 3列定義します。
-                        dt.Columns.Add("TrainID", Type.GetType("System.String"));
-                        dt.Columns.Add("TrainType", Type.GetType("System.String"));
-                        dt.Columns.Add("TrainName", Type.GetType("System.String"));
+                        dt.Columns.Add("列車番号", Type.GetType("System.String"));
+                        dt.Columns.Add("列車種別", Type.GetType("System.String"));
+                        dt.Columns.Add("行先", Type.GetType("System.String"));
 
-                        //駅数分
-                        foreach(string station in stations)
+                        // 駅数分列を追加する
+                        // データの仕様上駅名の重複があるので駅名の頭文字に(数字#)を付与
+                        if (data.Contains(@"Kudari"))
                         {
-                            dt.Columns.Add(station, Type.GetType("System.String"));
+                            foreach (var station in stations.Select((value, index) => new { value, index }))
+                            {
+                                dt.Columns.Add((station.index + 1) + "#" + station.value, Type.GetType("System.String"));
+                            }
+                        }
+                        else if (data.Contains(@"Nobori"))
+                        {
+                            foreach (var station in stations.Select((value, index) => new { value, index }))
+                            {
+                                dt.Columns.Add((station.index + 1) + "#" + station.value, Type.GetType("System.String"));
+                            }
                         }
 
                         ds.Tables.Add(dt);
+                    }
+
+                    // ダイヤデータ
+                    if (data.Contains(@"Ressya."))
+                    {
+                        // 列車の方向を取得
+                        data = sr.ReadLine();
+
+                        /*
+                         * 方向別で何か処理行うならここで。
+                         */
+
+                        // 種別取得
+                        data = sr.ReadLine();
+                        string traintype = data.Split('=')[1];
+
+                        // 列車番号:ついていれば取得
+                        data = sr.ReadLine();
+                        string trainid = "";
+                        if (data.Split('=')[0].Contains("Ressyabangou"))
+                        {
+                            trainid = data.Split('=')[1];
+                            data = sr.ReadLine();
+                        }
+
+                        // 列車名：ついていれば取得
+                        string trainname = "";
+                        if (data.Split('=')[0].Contains("Ressyamei"))
+                        {
+                            trainname = data.Split('=')[1];
+                            data = sr.ReadLine();
+                        }
+
+                        // 号数：ついていれば取得
+                        string trainno = "";
+                        if (data.Split('=')[0].Contains("Gousuu"))
+                        {
+                            trainno = data.Split('=')[1];
+                            data = sr.ReadLine();
+                        }
+
+                        // ダイヤデータ
+                        string[] diagrams = data.Split('=')[1].Split(',');
+
+                        // データをカラムに挿入
+                        DataSet ds = this.diagrams.Last().Value;
+                        DataRow dr = ds.Tables[ds.Tables.Count - 1].NewRow();
+                        dr[0] = trainid;
+                        if (!string.IsNullOrEmpty(trainno))
+                        {
+                            dr[1] = this.traintype[int.Parse(traintype)] + " " + trainno + "号";
+                        } else
+                        {
+                            dr[1] = this.traintype[int.Parse(traintype)];
+                        }
+                        dr[2] = trainname;
+
+                        // ダイヤデータ整形
+                        foreach (var diagram in diagrams.Select((value, index) => new { value, index }))
+                        {
+                            string dia = "";
+                            if (diagram.value.Equals("2") || diagram.value.Split(';')[0].Equals("2"))
+                            {
+                                dia = "通過";
+                            }
+                            else if (diagram.value.Split(';')[0].Equals("1"))
+                            {
+                                if (diagram.value.Split('/').Count().Equals(2))
+                                {
+                                    if (!string.IsNullOrEmpty(diagram.value.Split('/')[1]))
+                                    {
+                                        dia = diagram.value.Split('/')[1];
+                                    } else
+                                    {
+                                        dia = diagram.value.Split(';')[1].Split('/')[0];
+                                    }
+                                } else
+                                {
+                                    dia = diagram.value.Split(';')[1];
+                                }
+                                
+                            } else
+                            {
+                                dia = diagram.value;
+                            }
+
+                            // 発着時刻が3桁の場合0を付与
+                            if(dia.Count() == 3)
+                            {
+                                dia = "0" + dia;
+                            }
+
+                            dr[3 + diagram.index] = dia;
+                        }
+
+                        // データ追加
+                        ds.Tables[ds.Tables.Count - 1].Rows.Add(dr);
                     }
                 }
             }
