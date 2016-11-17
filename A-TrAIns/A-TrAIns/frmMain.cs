@@ -56,6 +56,10 @@ namespace A_TrAIns
                     MessageBox.Show("Oudiaのデータではありません！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else {
+                    // 駅リストとダイヤ一覧の初期化
+                    cboxStationList.Items.Clear();
+                    cboxDiaList.Items.Clear();
+
                     // タイトルバーの設定
                     Text = title + " - " + ofdOudia.FileName;
 
@@ -84,6 +88,8 @@ namespace A_TrAIns
                 DataSet ds = dm.getDiagram(dianame);
                 if (ds != null)
                 {
+                    // 再初期化してからデータソースを紐付け
+                    dgvDiagram.DataSource = null;
                     DataTable dt = ds.Tables[cboxFor.SelectedIndex];
                     dgvDiagram.DataSource = dt;
                 }
