@@ -60,7 +60,7 @@ namespace A_TrAIns
                 }
                 else {
                     // 駅リストとダイヤ一覧の初期化
-                    cboxStationList.Items.Clear();
+                    //cboxStationList.Items.Clear();
                     cboxDiaList.Items.Clear();
 
                     // タイトルバーの設定
@@ -70,7 +70,7 @@ namespace A_TrAIns
                     tboxLineName.Text = ol.getLinename();
 
                     // 駅リストの取得
-                    cboxStationList.Items.AddRange(ol.getStations().ToArray());
+                    //cboxStationList.Items.AddRange(ol.getStations().ToArray());
 
                     // ダイヤグラムの取得
                     Dictionary<string, DataSet> diagrams = ol.getDiagrams();
