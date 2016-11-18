@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Text;
 
 // yukalib - C#でゆかりさんに読み上げてもらえるように出来るライブラリ
 // 2016-11-18 @ InariFox
@@ -16,11 +17,18 @@ namespace YukarinTalk
     public class yukalib
     {
         // Win32API関係
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr GetWindow(IntPtr hWnd, uint uCmd);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
         public static extern int PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr ptr, StringBuilder lParam);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         const uint GW_HWNDFIRST = 0; // hWnd と同種のウィンドウでもっとも z-order が高いものを取得
         const uint GW_HWNDLAST = 1;  // hWnd と同種のウィンドウでもっとも z-order が低いものを取得
@@ -32,6 +40,8 @@ namespace YukarinTalk
         // 操作関係
         const uint WM_LBUTTONDOWN = 0x0201; //左ボタン押下
         const uint WM_LBUTTONUP = 0x0202; //左ボタン離した
+        //const uint EM_STREAMIN = 0x0449; // テキスト入力
+        const uint WM_SETTEXT = 0x000C; // テキスト入力
 
         // 操作対象(ゆかりさん)
         const string titleStr = "VOICEROID＋ 結月ゆかり EX";
@@ -43,6 +53,10 @@ namespace YukarinTalk
         public yukalib()
         {
             text = "";  // null突っ込んで何起きるか分からないので空文字で初期化しておく。
+        }
+        public yukalib(string str)
+        {
+            text = str;
         }
 
         // 読み上げる文章を設定
@@ -96,12 +110,18 @@ namespace YukarinTalk
                     hWndWorkPtr1 = GetWindow(hWndWorkPtr1, GW_CHILD);
                     hWndTextbox = hWndWorkPtr1;
 
-                    /* TODO:ここでテキストをゆかりさんに渡す */
-
                     // ボタンのウィンドウハンドル
                     hWndWorkPtr2 = GetWindow(hWndWorkPtr2, GW_HWNDNEXT);
                     hWndWorkPtr2 = GetWindow(hWndWorkPtr2, GW_CHILD);
                     hWndButton = hWndWorkPtr2;
+
+                    // 実処理
+                    // ゆかりさんのフォーカスをアクティブにする
+                    SetForegroundWindow(pitem.MainWindowHandle);
+
+                    // ゆかりさんに渡す読み上げるテキストを生成
+                    StringBuilder sb = new StringBuilder(text);
+                    SendMessage(hWndTextbox, WM_SETTEXT, IntPtr.Zero, sb);
 
                     // 再生ボタンを押す
                     PostMessage(hWndButton, WM_LBUTTONDOWN, 0, 0);

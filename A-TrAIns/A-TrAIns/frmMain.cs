@@ -15,6 +15,7 @@ namespace A_TrAIns
     {
         private oudlib ol;
         private diaman dm;
+        private yukalib yl;
         private string title;
 
         public frmRough()
@@ -22,6 +23,7 @@ namespace A_TrAIns
             InitializeComponent();
             ol = new oudlib();
             dm = new diaman();
+            yl = new yukalib();
             title = Text;
         }
 
@@ -98,22 +100,12 @@ namespace A_TrAIns
         }
 
         // ゆかりさんに読み上げテストしてもらう用の一時的な奴
+        /*
         private void btn_test_Click(object sender, EventArgs e)
         {
             yukalib yl = new yukalib();
             yl.Play();
         }
-
-        // 路線データ表示
-        // 路線名と駅リストをMessageBoxで表示する
-        //private void btnShowInfo_Click(object sender, EventArgs e)
-        //{
-        //    string[] info = ol.getlineinfo().ToArray();
-        //    for (int i = 0; i < info.Length; i++)
-        //    {
-        //        tboxDiagram.Text += info[i] + "\r\n";
-        //    }
-
-        //}
+        */
     }
 }
