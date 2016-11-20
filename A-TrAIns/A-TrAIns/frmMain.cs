@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using oudtool;
 using System.Data;
+using YukarinTalk;
 
 // A_TrAIns
 // 2016-11-10 @ InariFox
@@ -14,6 +15,7 @@ namespace A_TrAIns
     {
         private oudlib ol;
         private diaman dm;
+        private yukalib yl;
         private string title;
 
         public frmRough()
@@ -21,6 +23,7 @@ namespace A_TrAIns
             InitializeComponent();
             ol = new oudlib();
             dm = new diaman();
+            yl = new yukalib();
             title = Text;
         }
 
@@ -57,7 +60,7 @@ namespace A_TrAIns
                 }
                 else {
                     // 駅リストとダイヤ一覧の初期化
-                    cboxStationList.Items.Clear();
+                    dgvDiagram.DataSource = null;
                     cboxDiaList.Items.Clear();
 
                     // タイトルバーの設定
@@ -67,7 +70,7 @@ namespace A_TrAIns
                     tboxLineName.Text = ol.getLinename();
 
                     // 駅リストの取得
-                    cboxStationList.Items.AddRange(ol.getStations().ToArray());
+                    //cboxStationList.Items.AddRange(ol.getStations().ToArray());
 
                     // ダイヤグラムの取得
                     Dictionary<string, DataSet> diagrams = ol.getDiagrams();
@@ -75,6 +78,10 @@ namespace A_TrAIns
 
                     // ダイヤ一覧の取得
                     cboxDiaList.Items.AddRange(dm.getDiagramNames());
+
+                    // リストインデックスを設定
+                    cboxDiaList.SelectedIndex = 0;
+                    cboxFor.SelectedIndex = 0;
                 }
             }
         }
@@ -96,16 +103,13 @@ namespace A_TrAIns
             }
         }
 
-        // 路線データ表示
-        // 路線名と駅リストをMessageBoxで表示する
-        //private void btnShowInfo_Click(object sender, EventArgs e)
-        //{
-        //    string[] info = ol.getlineinfo().ToArray();
-        //    for (int i = 0; i < info.Length; i++)
-        //    {
-        //        tboxDiagram.Text += info[i] + "\r\n";
-        //    }
-
-        //}
+        // ゆかりさんに読み上げテストしてもらう用の一時的な奴
+        /*
+        private void btn_test_Click(object sender, EventArgs e)
+        {
+            yukalib yl = new yukalib();
+            yl.Play();
+        }
+        */
     }
 }
