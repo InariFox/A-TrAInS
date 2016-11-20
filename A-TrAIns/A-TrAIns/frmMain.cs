@@ -60,7 +60,7 @@ namespace A_TrAIns
                 }
                 else {
                     // 駅リストとダイヤ一覧の初期化
-                    //cboxStationList.Items.Clear();
+                    dgvDiagram.DataSource = null;
                     cboxDiaList.Items.Clear();
 
                     // タイトルバーの設定
@@ -78,6 +78,10 @@ namespace A_TrAIns
 
                     // ダイヤ一覧の取得
                     cboxDiaList.Items.AddRange(dm.getDiagramNames());
+
+                    // リストインデックスを設定
+                    cboxDiaList.SelectedIndex = 0;
+                    cboxFor.SelectedIndex = 0;
                 }
             }
         }
