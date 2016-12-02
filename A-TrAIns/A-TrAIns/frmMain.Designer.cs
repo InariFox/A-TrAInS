@@ -40,10 +40,10 @@
             this.lblFor = new System.Windows.Forms.Label();
             this.cboxFor = new System.Windows.Forms.ComboBox();
             this.pn_menu1 = new System.Windows.Forms.Panel();
+            this.btn_saystation = new System.Windows.Forms.Button();
+            this.btn_saytrain = new System.Windows.Forms.Button();
             this.pn_menu2 = new System.Windows.Forms.Panel();
             this.btn_newfile = new System.Windows.Forms.Button();
-            this.btn_saytrain = new System.Windows.Forms.Button();
-            this.btn_saystation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiagram)).BeginInit();
             this.pn_menu1.SuspendLayout();
             this.pn_menu2.SuspendLayout();
@@ -80,8 +80,10 @@
             this.dgvDiagram.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDiagram.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvDiagram.Location = new System.Drawing.Point(0, 102);
+            this.dgvDiagram.MultiSelect = false;
             this.dgvDiagram.Name = "dgvDiagram";
             this.dgvDiagram.RowTemplate.Height = 21;
+            this.dgvDiagram.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvDiagram.Size = new System.Drawing.Size(1008, 627);
             this.dgvDiagram.TabIndex = 3;
             // 
@@ -166,6 +168,25 @@
             this.pn_menu1.Size = new System.Drawing.Size(899, 102);
             this.pn_menu1.TabIndex = 13;
             // 
+            // btn_saystation
+            // 
+            this.btn_saystation.Location = new System.Drawing.Point(582, 52);
+            this.btn_saystation.Name = "btn_saystation";
+            this.btn_saystation.Size = new System.Drawing.Size(266, 23);
+            this.btn_saystation.TabIndex = 17;
+            this.btn_saystation.Text = "選択した駅のアナウンスを読む";
+            this.btn_saystation.UseVisualStyleBackColor = true;
+            // 
+            // btn_saytrain
+            // 
+            this.btn_saytrain.Location = new System.Drawing.Point(582, 24);
+            this.btn_saytrain.Name = "btn_saytrain";
+            this.btn_saytrain.Size = new System.Drawing.Size(266, 23);
+            this.btn_saytrain.TabIndex = 16;
+            this.btn_saytrain.Text = "選択した列車のアナウンスを読む";
+            this.btn_saytrain.UseVisualStyleBackColor = true;
+            this.btn_saytrain.Click += new System.EventHandler(this.btn_saytrain_Click);
+            // 
             // pn_menu2
             // 
             this.pn_menu2.Controls.Add(this.btn_newfile);
@@ -186,24 +207,6 @@
             this.btn_newfile.TabIndex = 15;
             this.btn_newfile.Text = "新規作成";
             this.btn_newfile.UseVisualStyleBackColor = true;
-            // 
-            // btn_saytrain
-            // 
-            this.btn_saytrain.Location = new System.Drawing.Point(582, 24);
-            this.btn_saytrain.Name = "btn_saytrain";
-            this.btn_saytrain.Size = new System.Drawing.Size(266, 23);
-            this.btn_saytrain.TabIndex = 16;
-            this.btn_saytrain.Text = "選択した列車のアナウンスを読む";
-            this.btn_saytrain.UseVisualStyleBackColor = true;
-            // 
-            // btn_saystation
-            // 
-            this.btn_saystation.Location = new System.Drawing.Point(582, 52);
-            this.btn_saystation.Name = "btn_saystation";
-            this.btn_saystation.Size = new System.Drawing.Size(266, 23);
-            this.btn_saystation.TabIndex = 17;
-            this.btn_saystation.Text = "選択した駅のアナウンスを読む";
-            this.btn_saystation.UseVisualStyleBackColor = true;
             // 
             // frmRough
             // 
