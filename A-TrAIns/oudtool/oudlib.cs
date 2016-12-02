@@ -117,10 +117,12 @@ namespace oudtool
                         }
                         else if (data.Contains(@"Nobori"))
                         {
+                            stations.Reverse();
                             foreach (var station in stations.Select((value, index) => new { value, index }))
                             {
                                 dt.Columns.Add((station.index + 1) + "#" + station.value, Type.GetType("System.String"));
                             }
+                            stations.Reverse();
                         }
 
                         ds.Tables.Add(dt);

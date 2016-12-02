@@ -31,7 +31,7 @@ namespace A_TrAIns
         {
             bool result = false;
             String[] data = head.Split('=');
-            if(data.Length == 2)
+            if (data.Length == 2)
             {
                 result = data[1].Contains("OuDia");
             }
@@ -100,6 +100,23 @@ namespace A_TrAIns
                     DataTable dt = ds.Tables[cboxFor.SelectedIndex];
                     dgvDiagram.DataSource = dt;
                 }
+            }
+        }
+
+        // 列車のアナウンスを読む
+        private void btn_saytrain_Click(object sender, EventArgs e)
+        {
+            if (dgvDiagram.DataSource != null && dgvDiagram.CurrentCell.RowIndex >= 0){
+                // 選択した行を取得
+                int cell = dgvDiagram.CurrentCell.RowIndex;
+                DataRowView drv = (DataRowView)dgvDiagram.Rows[cell].DataBoundItem;
+                DataRow dr = drv.Row;
+                AnGen ag = new AnGen(dr);
+
+                // 列車アナウンス制御フォームに転送
+                frmSender fs = new frmSender(ag);
+                fs.ShowDialog();
+                fs.Dispose();
             }
         }
 
