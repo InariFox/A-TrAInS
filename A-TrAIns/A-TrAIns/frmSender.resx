@@ -117,18 +117,174 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="rBtnBouyomi.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="rBtnBouyomi.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 52</value>
+  </data>
+  <data name="rBtnBouyomi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 16</value>
+  </data>
+  <data name="rBtnBouyomi.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rBtnBouyomi.Text" xml:space="preserve">
+    <value>棒読みちゃん</value>
+  </data>
+  <data name="&gt;&gt;rBtnBouyomi.Name" xml:space="preserve">
+    <value>rBtnBouyomi</value>
+  </data>
+  <data name="&gt;&gt;rBtnBouyomi.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rBtnBouyomi.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;rBtnBouyomi.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rBtnYukari.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rBtnYukari.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 30</value>
+  </data>
+  <data name="rBtnYukari.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 16</value>
+  </data>
+  <data name="rBtnYukari.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rBtnYukari.Text" xml:space="preserve">
+    <value>結月ゆかり EX</value>
+  </data>
+  <data name="&gt;&gt;rBtnYukari.Name" xml:space="preserve">
+    <value>rBtnYukari</value>
+  </data>
+  <data name="&gt;&gt;rBtnYukari.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rBtnYukari.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;rBtnYukari.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="lblTarget.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lblTarget.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 10</value>
+  </data>
+  <data name="lblTarget.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 12</value>
+  </data>
+  <data name="lblTarget.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="lblTarget.Text" xml:space="preserve">
+    <value>読み上げソフト</value>
+  </data>
+  <data name="&gt;&gt;lblTarget.Name" xml:space="preserve">
+    <value>lblTarget</value>
+  </data>
+  <data name="&gt;&gt;lblTarget.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblTarget.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;lblTarget.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 5</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 76</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>pnlControl</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 5</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 76</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>共通案内</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>pnlControl</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="btnNext.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnNext.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 5</value>
+  </data>
+  <data name="btnNext.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 76</value>
+  </data>
+  <data name="btnNext.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="btnNext.Text" xml:space="preserve">
+    <value>次を再生</value>
+  </data>
+  <data name="&gt;&gt;btnNext.Name" xml:space="preserve">
+    <value>btnNext</value>
+  </data>
+  <data name="&gt;&gt;btnNext.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnNext.Parent" xml:space="preserve">
+    <value>pnlControl</value>
+  </data>
+  <data name="&gt;&gt;btnNext.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="btnPlay.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnPlay.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 5</value>
   </data>
   <data name="btnPlay.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 76</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnPlay.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -145,10 +301,10 @@
     <value>pnlControl</value>
   </data>
   <data name="&gt;&gt;btnPlay.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="btnExit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 5</value>
+    <value>506, 5</value>
   </data>
   <data name="btnExit.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 76</value>
@@ -169,16 +325,16 @@
     <value>pnlControl</value>
   </data>
   <data name="&gt;&gt;btnExit.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="pnlControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
   <data name="pnlControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 377</value>
+    <value>0, 477</value>
   </data>
   <data name="pnlControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 84</value>
+    <value>584, 84</value>
   </data>
   <data name="pnlControl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -195,31 +351,31 @@
   <data name="&gt;&gt;pnlControl.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tBoxText.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="lboxAnnounce.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="tBoxText.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lboxAnnounce.ItemHeight" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="lboxAnnounce.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="tBoxText.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="lboxAnnounce.Size" type="System.Drawing.Size, System.Drawing">
+    <value>584, 472</value>
   </data>
-  <data name="tBoxText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 376</value>
-  </data>
-  <data name="tBoxText.TabIndex" type="System.Int32, mscorlib">
+  <data name="lboxAnnounce.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;tBoxText.Name" xml:space="preserve">
-    <value>tBoxText</value>
+  <data name="&gt;&gt;lboxAnnounce.Name" xml:space="preserve">
+    <value>lboxAnnounce</value>
   </data>
-  <data name="&gt;&gt;tBoxText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lboxAnnounce.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tBoxText.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lboxAnnounce.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;tBoxText.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lboxAnnounce.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -229,7 +385,7 @@
     <value>6, 12</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>364, 461</value>
+    <value>584, 561</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>A-TrAIns 読み上げ制御</value>

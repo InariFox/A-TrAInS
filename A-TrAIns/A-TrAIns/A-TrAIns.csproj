@@ -91,6 +91,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BouyomiTalk\BouyomiTalk.csproj">
+      <Project>{5c95f6a4-888a-4669-ab5f-75d2581bc99d}</Project>
+      <Name>BouyomiTalk</Name>
+    </ProjectReference>
     <ProjectReference Include="..\oudtool\oudtool.csproj">
       <Project>{d81540ac-5a16-4798-80f0-c024829c3f57}</Project>
       <Name>oudtool</Name>

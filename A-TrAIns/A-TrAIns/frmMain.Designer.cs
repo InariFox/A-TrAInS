@@ -170,6 +170,7 @@
             // 
             // btn_saystation
             // 
+            this.btn_saystation.Enabled = false;
             this.btn_saystation.Location = new System.Drawing.Point(582, 52);
             this.btn_saystation.Name = "btn_saystation";
             this.btn_saystation.Size = new System.Drawing.Size(266, 23);
