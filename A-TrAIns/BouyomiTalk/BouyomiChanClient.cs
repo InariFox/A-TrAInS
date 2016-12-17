@@ -29,7 +29,7 @@ namespace FNF.Utility
         /// </summary>
         public BouyomiChanClient()
         {
-            ClientChannel = new IpcClientChannel("hogehoge", null); //チャンネル名は何でもいい
+            ClientChannel = new IpcClientChannel("ATrAInS", null); //チャンネル名は何でもいい
             ChannelServices.RegisterChannel(ClientChannel, false);
             RemotingObject = (BouyomiChanRemoting)Activator.GetObject(typeof(BouyomiChanRemoting), "ipc://BouyomiChan/Remoting");
         }

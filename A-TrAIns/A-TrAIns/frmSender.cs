@@ -81,7 +81,11 @@ namespace A_TrAIns
             if (rBtnYukari.Checked)
             {
                 yl.setText(text);
-                result = yl.Play();
+                if (yl.searchTarget())
+                {
+                    yl.Play();
+                    result = true;
+                }
             } else if (rBtnBouyomi.Checked)
             {
                 bl.setText(text);
