@@ -1,6 +1,6 @@
 ﻿namespace Oud2Xml
 {
-    partial class Form1
+    partial class frmMain
     {
         /// <summary>
         /// 必要なデザイナー変数です。

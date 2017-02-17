@@ -12,11 +12,11 @@ using System.Xml;
 
 namespace Oud2Xml
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Form
     {
         private OudParser op;
 
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
@@ -67,6 +67,13 @@ namespace Oud2Xml
         {
             if (sfd.ShowDialog() == DialogResult.OK)
             {
+                op.convert();
+                XmlDocument data = op.getXml();
+                MemoryStream ms = new MemoryStream();
+                XmlTextWriter writer = new XmlTextWriter(ms, Encoding.UTF8);
+                writer.Formatting = Formatting.Indented;
+                data.Save(writer);
+
                 //OKボタンがクリックされたとき、
                 //選択された名前で新しいファイルを作成し、
                 //読み書きアクセス許可でそのファイルを開く。
@@ -77,7 +84,7 @@ namespace Oud2Xml
                 {
                     //ファイルに書き込む
                     System.IO.StreamWriter sw = new System.IO.StreamWriter(stream);
-                    sw.Write(tbox.Text);
+                    sw.Write(Encoding.UTF8.GetString(ms.ToArray()));
                     //閉じる
                     sw.Close();
                     stream.Close();
