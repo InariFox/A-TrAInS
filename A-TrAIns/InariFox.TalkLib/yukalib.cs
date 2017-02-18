@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Text;
 
 // yukalib - C#でゆかりさんに読み上げてもらえるように出来るライブラリ
