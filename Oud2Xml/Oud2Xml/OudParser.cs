@@ -10,7 +10,7 @@ namespace Oud2Xml
 {
     class OudParser
     {
-        private string[] ouddata;
+        private List<string> ouddata;
         private XmlDocument document;
 
         // trimメソッドの除外条件
@@ -36,7 +36,7 @@ namespace Oud2Xml
         {
             bool result = false;
 
-            string[] data = source.Replace("\r\n", "\n").Split('\n');
+            List<string>data = source.Replace("\r\n", "\n").Split('\n').ToList();
             if (data[0].Contains("FileType=OuDia"))
             {
                 ouddata = trim(data);
@@ -46,7 +46,7 @@ namespace Oud2Xml
             return result;
         }
 
-        private string[] trim(string[] source)
+        private List<string> trim(List<string> source)
         {
             List<string> d = source.ToList();
 
@@ -58,7 +58,7 @@ namespace Oud2Xml
                 }
             }
 
-            return d.ToArray();
+            return d;
         }
 
         public void convert()
@@ -73,7 +73,7 @@ namespace Oud2Xml
             XmlElement diagrams = document.CreateElement("diagrams");
             XmlElement comment = document.CreateElement("comment");
 
-            List<string> d = getlist().ToList();
+            List<string> d = getlist();
             for (int i = 0; i < d.Count; i++)
             {
                 //- 路線名
@@ -213,7 +213,7 @@ namespace Oud2Xml
             document.AppendChild(root);
         }
 
-        public string[] getlist()
+        public List<string> getlist()
         {
             return ouddata;
         }
