@@ -149,7 +149,6 @@ namespace InariFox.TalkLib
             {
                 //読み上げ処理をここに記述
             }
-
             return result;
         }
     }

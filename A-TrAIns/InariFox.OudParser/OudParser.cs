@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
 
-namespace Oud2Xml
+namespace InariFox.OudParser
 {
-    class OudParser
+    public class OudParser
     {
         private List<string> ouddata;
         private XmlDocument document;
@@ -36,7 +33,7 @@ namespace Oud2Xml
         {
             bool result = false;
 
-            List<string>data = source.Replace("\r\n", "\n").Split('\n').ToList();
+            List<string> data = source.Replace("\r\n", "\n").Split('\n').ToList();
             if (data[0].Contains("FileType=OuDia"))
             {
                 ouddata = trim(data);
@@ -77,7 +74,8 @@ namespace Oud2Xml
             for (int i = 0; i < d.Count; i++)
             {
                 //- 路線名
-                if(d[i].Contains("Rosenmei")){
+                if (d[i].Contains("Rosenmei"))
+                {
                     XmlElement line = document.CreateElement("line");  // ルート要素
                     line.SetAttribute("name", d[i].Split('=')[1]);
                     root.AppendChild(line);
@@ -88,7 +86,7 @@ namespace Oud2Xml
                 {
                     XmlElement station = document.CreateElement("station");  // ルート要素
                     station.InnerText = d[i].Split('=')[1];
-                    if (d[i + 1].Contains("Ekikibo_Ippan")){ station.SetAttribute("type", "0"); }
+                    if (d[i + 1].Contains("Ekikibo_Ippan")) { station.SetAttribute("type", "0"); }
                     else if (d[i + 1].Contains("Ekikibo_Syuyou")) { station.SetAttribute("type", "1"); }
                     else { station.SetAttribute("type", "-1"); }
 
@@ -122,7 +120,7 @@ namespace Oud2Xml
                     while (flag)
                     {
                         #region ダイヤグラムセクション解析
-                        if(d[i + 1].Contains("Houkou="))
+                        if (d[i + 1].Contains("Houkou="))
                         {
                             i++;
                             XmlElement track = document.CreateElement("track");
@@ -133,12 +131,13 @@ namespace Oud2Xml
                                 if (d[i].Contains("Nobori")) { is_down = false; }
 
                                 track.SetAttribute("train_type", d[++i].Split('=')[1]);
-                                if (d[i + 1].Contains("Ressyabangou=")){ track.SetAttribute("id", d[++i].Split('=')[1]); }
+                                if (d[i + 1].Contains("Ressyabangou=")) { track.SetAttribute("id", d[++i].Split('=')[1]); }
                                 if (d[i + 1].Contains("Ressyamei=")) { track.SetAttribute("name", d[++i].Split('=')[1]); }
                                 if (d[i + 1].Contains("Gousuu=")) { track.SetAttribute("id", d[++i].Split('=')[1]); }
-                                if (d[i + 1].Contains("EkiJikoku=")) {
+                                if (d[i + 1].Contains("EkiJikoku="))
+                                {
                                     List<string> dia = d[++i].Split('=')[1].Split(',').ToList();
-                                    for(int j = 0; j < dia.Count; j++)
+                                    for (int j = 0; j < dia.Count; j++)
                                     {
                                         XmlElement departunes = document.CreateElement("departunes");
                                         #region IF:その駅を発着するかどうか
@@ -161,7 +160,8 @@ namespace Oud2Xml
                                                     departunes.AppendChild(departune);
                                                 }
 
-                                            } else
+                                            }
+                                            else
                                             {
                                                 XmlElement departune = document.CreateElement("departune");
                                                 departune.InnerText = dia[j].Split(';')[1];
@@ -172,7 +172,7 @@ namespace Oud2Xml
                                         {
                                             departunes.SetAttribute("station", j.ToString());
 
-                                            if (!string.IsNullOrEmpty(dia[j])){ departunes.SetAttribute("stop", dia[j]); }
+                                            if (!string.IsNullOrEmpty(dia[j])) { departunes.SetAttribute("stop", dia[j]); }
                                             else { departunes.SetAttribute("stop", "3"); }
                                         }
                                         #endregion

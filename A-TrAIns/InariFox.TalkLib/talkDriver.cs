@@ -12,6 +12,8 @@ namespace InariFox.TalkLib
         private Dictionary<string, object> narratorset;
         public talkDriver()
         {
+            // 音声合成制御が可能なソフトを増やすにはここに追加
+            // ※ITalkLibインタフェースまたはVroidLibを継承したクラスを推奨
             narratorset = new Dictionary<string, object>();
             narratorset.Add("yukari", new yukaLib());
             narratorset.Add("bouyomi", new bouyomiLib());
@@ -58,6 +60,7 @@ namespace InariFox.TalkLib
                     yukaLib obj = (yukaLib)narratorset[target];
                     obj.setText(text);
                 }
+                result = true;
             }
 
             return result;

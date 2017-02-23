@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InariFox.TalkLib", "InariFo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InariFox.TalkLibTester", "InariFox.TalkLibTester\InariFox.TalkLibTester.csproj", "{C41EE724-83C4-43B0-8B09-27B08D472776}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InariFox.OudParser", "InariFox.OudParser\InariFox.OudParser.csproj", "{50814F5D-84AD-46BB-84C1-320F4E789172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A-TrAInS", "A-TrAInS\A-TrAInS.csproj", "{032B1BE9-09CC-4654-841D-69085E28F524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C41EE724-83C4-43B0-8B09-27B08D472776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C41EE724-83C4-43B0-8B09-27B08D472776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C41EE724-83C4-43B0-8B09-27B08D472776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50814F5D-84AD-46BB-84C1-320F4E789172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50814F5D-84AD-46BB-84C1-320F4E789172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50814F5D-84AD-46BB-84C1-320F4E789172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50814F5D-84AD-46BB-84C1-320F4E789172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032B1BE9-09CC-4654-841D-69085E28F524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032B1BE9-09CC-4654-841D-69085E28F524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032B1BE9-09CC-4654-841D-69085E28F524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032B1BE9-09CC-4654-841D-69085E28F524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
