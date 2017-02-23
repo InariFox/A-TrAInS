@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4CE65FC7-41B7-4ECE-B2EF-F5021F852377}</ProjectGuid>
+    <ProjectGuid>{C41EE724-83C4-43B0-8B09-27B08D472776}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Oud2Xml</RootNamespace>
-    <AssemblyName>Oud2Xml</AssemblyName>
+    <RootNamespace>InariFox.TalkLibTester</RootNamespace>
+    <AssemblyName>InariFox.TalkLibTester</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InariFox.OudParser">
-      <HintPath>..\..\A-TrAIns\InariFox.OudParser\bin\Debug\InariFox.OudParser.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -83,6 +80,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InariFox.TalkLib\InariFox.TalkLib.csproj">
+      <Project>{c7f27d76-d636-43c8-b662-d16b8dde62ca}</Project>
+      <Name>InariFox.TalkLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

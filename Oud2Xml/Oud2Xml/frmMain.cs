@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using InariFox.OudParser;
 
 namespace Oud2Xml
 {
@@ -31,7 +32,7 @@ namespace Oud2Xml
                 StreamReader data = new StreamReader(ofd.OpenFile(), Encoding.GetEncoding("Shift_JIS"));
                 if (op.load(data.ReadToEnd()))
                 {
-                    lbox1.Items.AddRange(op.getlist());
+                    lbox1.Items.AddRange(op.getlist().ToArray());
                 }
                 else { MessageBox.Show("Oudiaのデータではありません！", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 
