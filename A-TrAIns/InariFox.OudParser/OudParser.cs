@@ -61,7 +61,7 @@ namespace InariFox.OudParser
         public void convert()
         {
             document = new XmlDocument();
-            XmlDeclaration declaration = document.CreateXmlDeclaration("1.1", "UTF-8", null);  // XML宣言
+            XmlDeclaration declaration = document.CreateXmlDeclaration("1.0", "UTF-8", null);  // XML宣言
             document.AppendChild(declaration);
 
             XmlElement root = document.CreateElement("lines");
