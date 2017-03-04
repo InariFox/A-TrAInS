@@ -9,13 +9,17 @@ namespace A_TrAInS
 {
     public partial class mainWindow : Form
     {
-        TdmlContainer tlc;
+
+        const string appname = "A-TrAInS ";
+
+        TdmlConnector tcon;
         ErrorCode ec;
 
         public mainWindow()
         {
             InitializeComponent();
-            tlc = new TdmlContainer();
+            this.Text = appname;
+            tcon = new TdmlConnector();
             ec = new ErrorCode();
         }
 
@@ -42,7 +46,7 @@ namespace A_TrAInS
             // XML読み込み
             if(Path.GetExtension(ofd.FileName) == ".tdml")
             {
-                tlc.load(ofd.FileName);
+                tcon.load(ofd.FileName);
                 result = true;
             }
             // Oud読み込み
@@ -54,15 +58,18 @@ namespace A_TrAInS
                 if (op.load(sr.ReadToEnd()))
                 {
                     op.convert();
-                    tlc.load(op.getXml());
+                    tcon.load(op.getXml());
                     result = true;
                 }
 
                 sr.Close();
             }
 
+            // 読み込んだデータを反映
             if (result)
             {
+                tcon.parse();
+                Text +="- " + tcon.Tp.Linename;
             }
             else
             {

@@ -55,7 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TdmlContainer.cs" />
+    <Compile Include="TdmlConnector.cs" />
     <EmbeddedResource Include="mainWindow.resx">
       <DependentUpon>mainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,9 +86,9 @@
       <Project>{50814f5d-84ad-46bb-84c1-320f4e789172}</Project>
       <Name>InariFox.OudParser</Name>
     </ProjectReference>
-    <ProjectReference Include="..\InariFox.TdmlParser\InariFox.TdmlParser.csproj">
-      <Project>{7ad5fa55-3f02-4ca7-8e78-405bf6e0d9f5}</Project>
-      <Name>InariFox.TdmlParser</Name>
+    <ProjectReference Include="..\InariFox.TdmlLib\InariFox.TdmlLib.csproj">
+      <Project>{011314ff-c102-407e-a7bf-0cc0d4023bce}</Project>
+      <Name>InariFox.TdmlLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
