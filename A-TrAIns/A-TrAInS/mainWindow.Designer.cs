@@ -36,16 +36,34 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.stripMenuItemSave = new System.Windows.Forms.ToolStripMenuItem();
             this.stripMenuItemRename = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.stripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.stripItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.stripMenuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sCmain = new System.Windows.Forms.SplitContainer();
+            this.sCDg = new System.Windows.Forms.SplitContainer();
+            this.cboxDgList = new System.Windows.Forms.ComboBox();
+            this.dgvDg = new System.Windows.Forms.DataGridView();
+            this.btnSettingText = new System.Windows.Forms.Button();
+            this.btnSettingStation = new System.Windows.Forms.Button();
+            this.lblPn2Option = new System.Windows.Forms.Label();
+            this.btnPlayAnnounce = new System.Windows.Forms.Button();
+            this.rbtnTrain = new System.Windows.Forms.RadioButton();
+            this.rbtnStation = new System.Windows.Forms.RadioButton();
+            this.lblPn2Head = new System.Windows.Forms.Label();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.stripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCmain)).BeginInit();
+            this.sCmain.Panel1.SuspendLayout();
+            this.sCmain.Panel2.SuspendLayout();
             this.sCmain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sCDg)).BeginInit();
+            this.sCDg.Panel1.SuspendLayout();
+            this.sCDg.Panel2.SuspendLayout();
+            this.sCDg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDg)).BeginInit();
             this.SuspendLayout();
             // 
             // stripMain
@@ -76,6 +94,7 @@
             // 
             // stripMenuItemNew
             // 
+            this.stripMenuItemNew.Enabled = false;
             this.stripMenuItemNew.Image = ((System.Drawing.Image)(resources.GetObject("stripMenuItemNew.Image")));
             this.stripMenuItemNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.stripMenuItemNew.Name = "stripMenuItemNew";
@@ -91,6 +110,7 @@
             this.stripMenuItemOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.stripMenuItemOpen.Size = new System.Drawing.Size(191, 22);
             this.stripMenuItemOpen.Text = "開く(&O)";
+            this.stripMenuItemOpen.Click += new System.EventHandler(this.stripMenuItemOpen_Click);
             // 
             // toolStripSeparator
             // 
@@ -99,6 +119,7 @@
             // 
             // stripMenuItemSave
             // 
+            this.stripMenuItemSave.Enabled = false;
             this.stripMenuItemSave.Image = ((System.Drawing.Image)(resources.GetObject("stripMenuItemSave.Image")));
             this.stripMenuItemSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.stripMenuItemSave.Name = "stripMenuItemSave";
@@ -108,9 +129,17 @@
             // 
             // stripMenuItemRename
             // 
+            this.stripMenuItemRename.Enabled = false;
             this.stripMenuItemRename.Name = "stripMenuItemRename";
             this.stripMenuItemRename.Size = new System.Drawing.Size(191, 22);
             this.stripMenuItemRename.Text = "名前を付けて保存(&A)";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Enabled = false;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
+            this.toolStripMenuItem1.Text = "オプション(&O)";
             // 
             // toolStripSeparator2
             // 
@@ -122,6 +151,7 @@
             this.stripMenuItemExit.Name = "stripMenuItemExit";
             this.stripMenuItemExit.Size = new System.Drawing.Size(191, 22);
             this.stripMenuItemExit.Text = "終了(&X)";
+            this.stripMenuItemExit.Click += new System.EventHandler(this.stripMenuItemExit_Click);
             // 
             // stripMenuItemHelp
             // 
@@ -145,20 +175,143 @@
             this.stripMenuItemAbout.Size = new System.Drawing.Size(182, 22);
             this.stripMenuItemAbout.Text = "バージョン情報(&A)...";
             // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
-            this.toolStripMenuItem1.Text = "オプション(&O)";
-            // 
             // sCmain
             // 
             this.sCmain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sCmain.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.sCmain.IsSplitterFixed = true;
             this.sCmain.Location = new System.Drawing.Point(0, 25);
             this.sCmain.Name = "sCmain";
+            // 
+            // sCmain.Panel1
+            // 
+            this.sCmain.Panel1.Controls.Add(this.sCDg);
+            // 
+            // sCmain.Panel2
+            // 
+            this.sCmain.Panel2.Controls.Add(this.btnSettingText);
+            this.sCmain.Panel2.Controls.Add(this.btnSettingStation);
+            this.sCmain.Panel2.Controls.Add(this.lblPn2Option);
+            this.sCmain.Panel2.Controls.Add(this.btnPlayAnnounce);
+            this.sCmain.Panel2.Controls.Add(this.rbtnTrain);
+            this.sCmain.Panel2.Controls.Add(this.rbtnStation);
+            this.sCmain.Panel2.Controls.Add(this.lblPn2Head);
             this.sCmain.Size = new System.Drawing.Size(1008, 704);
             this.sCmain.SplitterDistance = 800;
             this.sCmain.TabIndex = 1;
+            // 
+            // sCDg
+            // 
+            this.sCDg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sCDg.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.sCDg.IsSplitterFixed = true;
+            this.sCDg.Location = new System.Drawing.Point(0, 0);
+            this.sCDg.Name = "sCDg";
+            this.sCDg.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // sCDg.Panel1
+            // 
+            this.sCDg.Panel1.Controls.Add(this.cboxDgList);
+            // 
+            // sCDg.Panel2
+            // 
+            this.sCDg.Panel2.Controls.Add(this.dgvDg);
+            this.sCDg.Size = new System.Drawing.Size(800, 704);
+            this.sCDg.SplitterDistance = 25;
+            this.sCDg.TabIndex = 0;
+            // 
+            // cboxDgList
+            // 
+            this.cboxDgList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboxDgList.FormattingEnabled = true;
+            this.cboxDgList.Location = new System.Drawing.Point(0, 0);
+            this.cboxDgList.Name = "cboxDgList";
+            this.cboxDgList.Size = new System.Drawing.Size(800, 20);
+            this.cboxDgList.TabIndex = 0;
+            // 
+            // dgvDg
+            // 
+            this.dgvDg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDg.Location = new System.Drawing.Point(0, 0);
+            this.dgvDg.Name = "dgvDg";
+            this.dgvDg.RowTemplate.Height = 21;
+            this.dgvDg.Size = new System.Drawing.Size(800, 675);
+            this.dgvDg.TabIndex = 0;
+            // 
+            // btnSettingText
+            // 
+            this.btnSettingText.Location = new System.Drawing.Point(2, 39);
+            this.btnSettingText.Name = "btnSettingText";
+            this.btnSettingText.Size = new System.Drawing.Size(199, 30);
+            this.btnSettingText.TabIndex = 9;
+            this.btnSettingText.Text = "アナウンス設定";
+            this.btnSettingText.UseVisualStyleBackColor = true;
+            // 
+            // btnSettingStation
+            // 
+            this.btnSettingStation.Location = new System.Drawing.Point(2, 3);
+            this.btnSettingStation.Name = "btnSettingStation";
+            this.btnSettingStation.Size = new System.Drawing.Size(199, 30);
+            this.btnSettingStation.TabIndex = 8;
+            this.btnSettingStation.Text = "駅設定";
+            this.btnSettingStation.UseVisualStyleBackColor = true;
+            // 
+            // lblPn2Option
+            // 
+            this.lblPn2Option.AutoSize = true;
+            this.lblPn2Option.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblPn2Option.Location = new System.Drawing.Point(2, 148);
+            this.lblPn2Option.Name = "lblPn2Option";
+            this.lblPn2Option.Size = new System.Drawing.Size(60, 15);
+            this.lblPn2Option.TabIndex = 7;
+            this.lblPn2Option.Text = "オプション";
+            // 
+            // btnPlayAnnounce
+            // 
+            this.btnPlayAnnounce.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnPlayAnnounce.Location = new System.Drawing.Point(2, 661);
+            this.btnPlayAnnounce.Name = "btnPlayAnnounce";
+            this.btnPlayAnnounce.Size = new System.Drawing.Size(202, 40);
+            this.btnPlayAnnounce.TabIndex = 5;
+            this.btnPlayAnnounce.Text = "読み上げ";
+            this.btnPlayAnnounce.UseVisualStyleBackColor = true;
+            // 
+            // rbtnTrain
+            // 
+            this.rbtnTrain.AutoSize = true;
+            this.rbtnTrain.Location = new System.Drawing.Point(7, 124);
+            this.rbtnTrain.Name = "rbtnTrain";
+            this.rbtnTrain.Size = new System.Drawing.Size(138, 16);
+            this.rbtnTrain.TabIndex = 4;
+            this.rbtnTrain.Text = "車内アナウンス読み上げ";
+            this.rbtnTrain.UseVisualStyleBackColor = true;
+            // 
+            // rbtnStation
+            // 
+            this.rbtnStation.AutoSize = true;
+            this.rbtnStation.Checked = true;
+            this.rbtnStation.Location = new System.Drawing.Point(7, 102);
+            this.rbtnStation.Name = "rbtnStation";
+            this.rbtnStation.Size = new System.Drawing.Size(126, 16);
+            this.rbtnStation.TabIndex = 2;
+            this.rbtnStation.TabStop = true;
+            this.rbtnStation.Text = "駅アナウンス読み上げ";
+            this.rbtnStation.UseVisualStyleBackColor = true;
+            // 
+            // lblPn2Head
+            // 
+            this.lblPn2Head.AutoSize = true;
+            this.lblPn2Head.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblPn2Head.Location = new System.Drawing.Point(3, 77);
+            this.lblPn2Head.Name = "lblPn2Head";
+            this.lblPn2Head.Size = new System.Drawing.Size(92, 15);
+            this.lblPn2Head.TabIndex = 1;
+            this.lblPn2Head.Text = "読み上げ設定";
+            // 
+            // ofd
+            // 
+            this.ofd.FileOk += new System.ComponentModel.CancelEventHandler(this.ofd_FileOk);
             // 
             // mainWindow
             // 
@@ -170,10 +323,19 @@
             this.MainMenuStrip = this.stripMain;
             this.Name = "mainWindow";
             this.Text = "A-TrAInS";
+            this.Load += new System.EventHandler(this.mainWindow_Load);
             this.stripMain.ResumeLayout(false);
             this.stripMain.PerformLayout();
+            this.sCmain.Panel1.ResumeLayout(false);
+            this.sCmain.Panel2.ResumeLayout(false);
+            this.sCmain.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCmain)).EndInit();
             this.sCmain.ResumeLayout(false);
+            this.sCDg.Panel1.ResumeLayout(false);
+            this.sCDg.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sCDg)).EndInit();
+            this.sCDg.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,6 +357,17 @@
         private System.Windows.Forms.ToolStripMenuItem stripItemHelp;
         private System.Windows.Forms.ToolStripMenuItem stripMenuItemAbout;
         private System.Windows.Forms.SplitContainer sCmain;
+        private System.Windows.Forms.OpenFileDialog ofd;
+        private System.Windows.Forms.Button btnPlayAnnounce;
+        private System.Windows.Forms.RadioButton rbtnTrain;
+        private System.Windows.Forms.RadioButton rbtnStation;
+        private System.Windows.Forms.Label lblPn2Head;
+        private System.Windows.Forms.Label lblPn2Option;
+        private System.Windows.Forms.SplitContainer sCDg;
+        private System.Windows.Forms.ComboBox cboxDgList;
+        private System.Windows.Forms.DataGridView dgvDg;
+        private System.Windows.Forms.Button btnSettingText;
+        private System.Windows.Forms.Button btnSettingStation;
     }
 }
 
