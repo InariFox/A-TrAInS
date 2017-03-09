@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace A_TrAInS
 {
-    class ErrorCode
+    class MessageCode
     {
         Dictionary<string , string> ec;
 
-        public ErrorCode()
+        public MessageCode()
         {
             ec = new Dictionary<string, string>();
 
@@ -18,6 +18,10 @@ namespace A_TrAInS
             #region ファイル読み込み時エラー
             ec.Add("FL001", "指定されたファイルは存在しません。");
             ec.Add("FL002", "指定されたファイルの形式が不明です。");
+            #endregion
+
+            #region フォーム操作エラー
+            ec.Add("FM001", "ファイルが読み込まれていません。");
             #endregion
         }
 

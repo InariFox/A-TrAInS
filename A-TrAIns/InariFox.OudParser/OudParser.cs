@@ -64,7 +64,7 @@ namespace InariFox.OudParser
             XmlDeclaration declaration = document.CreateXmlDeclaration("1.0", "UTF-8", null);  // XML宣言
             document.AppendChild(declaration);
 
-            XmlElement root = document.CreateElement("lines");
+            XmlElement root = document.CreateElement("line");
             XmlElement stations = document.CreateElement("stations");
             XmlElement trains = document.CreateElement("trains");
             XmlElement diagrams = document.CreateElement("diagrams");
@@ -76,9 +76,7 @@ namespace InariFox.OudParser
                 //- 路線名
                 if (d[i].Contains("Rosenmei"))
                 {
-                    XmlElement line = document.CreateElement("line");  // ルート要素
-                    line.SetAttribute("name", d[i].Split('=')[1]);
-                    root.AppendChild(line);
+                    root.SetAttribute("name", d[i].Split('=')[1]);
                 }
 
                 //- 駅名

@@ -10,17 +10,19 @@ namespace A_TrAInS
     public partial class mainWindow : Form
     {
 
-        const string appname = "A-TrAInS ";
+        const string appname = "A-TrAInS";
 
         TdmlConnector tcon;
-        ErrorCode ec;
+        MessageCode mc;
+
+        settingStationWindow swst;
 
         public mainWindow()
         {
             InitializeComponent();
             this.Text = appname;
             tcon = new TdmlConnector();
-            ec = new ErrorCode();
+            mc = new MessageCode();
         }
 
         private void mainWindow_Load(object sender, EventArgs e)
@@ -32,16 +34,13 @@ namespace A_TrAInS
             ofd.Title = "ダイヤデータ読み込み";
         }
 
-        private void stripMenuItemExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void ofd_FileOk(object sender, CancelEventArgs e)
         {
             bool result = false;
 
             this.Activate();
+
+            tcon.empty();
 
             // XML読み込み
             if(Path.GetExtension(ofd.FileName) == ".tdml")
@@ -65,22 +64,68 @@ namespace A_TrAInS
                 sr.Close();
             }
 
-            // 読み込んだデータを反映
-            if (result)
+            // 読み込んだデータを反映と読み上げ関係のボタン有効化
+            if (result && tcon.parse())
             {
-                tcon.parse();
-                Text +="- " + tcon.Tp.Linename;
+                Text = appname + " - " + tcon.Tp.Linename;
+                swst = new settingStationWindow(tcon.Tp.Station);
+
+                btnSettingStation.Enabled = true;
+                btnSettingText.Enabled = true;
+                btnPlayAnnounce.Enabled = true;
             }
             else
             {
                 string code = "FL002";
-                MessageBox.Show(ec.getMessage(code), code, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showErrorBox(mc.getMessage(code), code);
+
+                btnSettingStation.Enabled = false;
+                btnSettingText.Enabled = false;
+                btnPlayAnnounce.Enabled = false;
+            }
+
+        }
+
+        private void stripMenuItemOpen_Click(object sender, EventArgs e){ ofd.ShowDialog(); }
+        private void stripMenuItemExit_Click(object sender, EventArgs e){ this.Close(); }
+        private void stripMenuItemAbout_Click(object sender, EventArgs e)
+        {
+            VersionWindow vw = new VersionWindow();
+            vw.ShowDialog();
+            vw.Dispose();
+        }
+
+        private void btnSettingStation_Click(object sender, EventArgs e)
+        {
+            if (swst != null)
+            {
+                swst.ShowDialog();
+            }
+            else
+            {
+                string code = "FM001";
+                showErrorBox(mc.getMessage(code), code);
             }
         }
 
-        private void stripMenuItemOpen_Click(object sender, EventArgs e)
+        private void btnSettingText_Click(object sender, EventArgs e)
         {
-            ofd.ShowDialog();
+
+        }
+
+        private void showErrorBox(string msg, string code){ showMessageBox(msg, code, 1); }
+        private void showInfoBox(string msg) { showMessageBox(msg, "", 2); }
+        private void showMessageBox(string msg, string code, int type)
+        {
+            switch (type)
+            {
+                case 1: // エラー
+                    MessageBox.Show(msg + "\r\nCode:" + code, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                case 2: // 完了
+                    MessageBox.Show(msg, "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
         }
     }
 }

@@ -16,11 +16,6 @@ namespace InariFox.TdmlLib
 
         public TdmlParser()
         {
-            Linename = "";
-            Tdml = new XmlDocument();
-            Properties = new Dictionary<string, string>();
-            Station = new DataTable();
-            Traintype = new Dictionary<string, string>();
             Message = "";
         }
 
@@ -29,14 +24,30 @@ namespace InariFox.TdmlLib
             bool result = false;
 
             try {
-                XmlNode root = tdml.SelectSingleNode("//line");
-
+                // root取得
                 // 路線名
-                XmlElement ln = (XmlElement)root;
-                Linename = ln.GetAttribute("name");
+                XmlNode line = tdml.GetElementsByTagName("line")[0];
+                XmlElement linename = (XmlElement)line;
+                Linename = linename.GetAttribute("name");
 
                 // 駅リスト
-                //XmlNodeList st = tdml.SelectNodes("");
+                XmlNodeList stations = tdml.GetElementsByTagName("station");
+                foreach (XmlNode st in stations)
+                {
+                    string st_name = st.InnerText;
+                    XmlElement type = (XmlElement)st;
+                    int st_type;
+                    bool parse = int.TryParse(type.GetAttribute("type"), out st_type);
+                    if (!parse){ st_type = -1; }
+
+                    DataRow dr = Station.NewRow();
+                    dr["name"] = st_name;
+                    dr["type"] = (st_type == 0) ? "主要駅" : "一般駅";
+                    dr["visible"] = "読み上げる";
+
+                    Station.Rows.Add(dr);
+                }
+                
 
                 result = true;
             }

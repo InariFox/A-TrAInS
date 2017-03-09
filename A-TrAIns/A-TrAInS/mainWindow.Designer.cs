@@ -174,6 +174,7 @@
             this.stripMenuItemAbout.Name = "stripMenuItemAbout";
             this.stripMenuItemAbout.Size = new System.Drawing.Size(182, 22);
             this.stripMenuItemAbout.Text = "バージョン情報(&A)...";
+            this.stripMenuItemAbout.Click += new System.EventHandler(this.stripMenuItemAbout_Click);
             // 
             // sCmain
             // 
@@ -223,6 +224,7 @@
             // cboxDgList
             // 
             this.cboxDgList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboxDgList.Enabled = false;
             this.cboxDgList.FormattingEnabled = true;
             this.cboxDgList.Location = new System.Drawing.Point(0, 0);
             this.cboxDgList.Name = "cboxDgList";
@@ -241,21 +243,25 @@
             // 
             // btnSettingText
             // 
+            this.btnSettingText.Enabled = false;
             this.btnSettingText.Location = new System.Drawing.Point(2, 39);
             this.btnSettingText.Name = "btnSettingText";
             this.btnSettingText.Size = new System.Drawing.Size(199, 30);
             this.btnSettingText.TabIndex = 9;
             this.btnSettingText.Text = "アナウンス設定";
             this.btnSettingText.UseVisualStyleBackColor = true;
+            this.btnSettingText.Click += new System.EventHandler(this.btnSettingText_Click);
             // 
             // btnSettingStation
             // 
+            this.btnSettingStation.Enabled = false;
             this.btnSettingStation.Location = new System.Drawing.Point(2, 3);
             this.btnSettingStation.Name = "btnSettingStation";
             this.btnSettingStation.Size = new System.Drawing.Size(199, 30);
             this.btnSettingStation.TabIndex = 8;
             this.btnSettingStation.Text = "駅設定";
             this.btnSettingStation.UseVisualStyleBackColor = true;
+            this.btnSettingStation.Click += new System.EventHandler(this.btnSettingStation_Click);
             // 
             // lblPn2Option
             // 
@@ -269,6 +275,7 @@
             // 
             // btnPlayAnnounce
             // 
+            this.btnPlayAnnounce.Enabled = false;
             this.btnPlayAnnounce.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnPlayAnnounce.Location = new System.Drawing.Point(2, 661);
             this.btnPlayAnnounce.Name = "btnPlayAnnounce";

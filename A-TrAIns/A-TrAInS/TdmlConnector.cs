@@ -17,7 +17,7 @@ namespace A_TrAInS
         public TdmlConnector()
         {
             tdml = new XmlDocument();
-            tp = new TdmlParser();
+            Tp = new TdmlParser();
         }
 
         public void load(string path)
@@ -37,7 +37,17 @@ namespace A_TrAInS
 
         public TdmlParser Tp
         {
+            private set { tp = value; }
             get { return tp; }
+        }
+
+        public void empty()
+        {
+            Tp.Dispose();
+            Tp = new TdmlParser();
+
+            tdml = null;
+            tdml = new XmlDocument();
         }
     }
 }
