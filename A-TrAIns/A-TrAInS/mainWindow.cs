@@ -13,7 +13,7 @@ namespace A_TrAInS
         const string appname = "A-TrAInS";
 
         TdmlConnector tcon;
-        MessageCode mc;
+        MesBox mb;
 
         settingStationWindow swst;
 
@@ -22,7 +22,7 @@ namespace A_TrAInS
             InitializeComponent();
             this.Text = appname;
             tcon = new TdmlConnector();
-            mc = new MessageCode();
+            mb = new MesBox();
         }
 
         private void mainWindow_Load(object sender, EventArgs e)
@@ -76,8 +76,8 @@ namespace A_TrAInS
             }
             else
             {
-                string code = "FL002";
-                showErrorBox(mc.getMessage(code), code);
+                mb.setCode("FL002");
+                mb.showMessageBox(true);
 
                 btnSettingStation.Enabled = false;
                 btnSettingText.Enabled = false;
@@ -103,29 +103,14 @@ namespace A_TrAInS
             }
             else
             {
-                string code = "FM001";
-                showErrorBox(mc.getMessage(code), code);
+                mb.setCode("FM001");
+                mb.showMessageBox(true);
             }
         }
 
         private void btnSettingText_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void showErrorBox(string msg, string code){ showMessageBox(msg, code, 1); }
-        private void showInfoBox(string msg) { showMessageBox(msg, "", 2); }
-        private void showMessageBox(string msg, string code, int type)
-        {
-            switch (type)
-            {
-                case 1: // エラー
-                    MessageBox.Show(msg + "\r\nCode:" + code, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
-                case 2: // 完了
-                    MessageBox.Show(msg, "情報", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-            }
         }
     }
 }

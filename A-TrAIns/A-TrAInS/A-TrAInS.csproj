@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MesBox.cs" />
     <Compile Include="settingAnnounceWindow.cs">
       <SubType>Form</SubType>
     </Compile>

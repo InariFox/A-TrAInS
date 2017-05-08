@@ -8,26 +8,30 @@ namespace A_TrAInS
 {
     class MessageCode
     {
-        Dictionary<string , string> ec;
+        Dictionary<string, string> codelist;
 
         public MessageCode()
         {
-            ec = new Dictionary<string, string>();
+            codelist = new Dictionary<string, string>();
 
-            ec.Add("UN999", "不明なエラー");
+            codelist.Add("UN999", "不明なエラー");
             #region ファイル読み込み時エラー
-            ec.Add("FL001", "指定されたファイルは存在しません。");
-            ec.Add("FL002", "指定されたファイルの形式が不明です。");
+            codelist.Add("FL001", "指定されたファイルは存在しません。");
+            codelist.Add("FL002", "指定されたファイルの形式が不明です。");
             #endregion
 
             #region フォーム操作エラー
-            ec.Add("FM001", "ファイルが読み込まれていません。");
+            codelist.Add("FM001", "ファイルが読み込まれていません。");
+            #endregion
+
+            #region 処理成功メッセージ
+            codelist.Add("OK001", "変更を適用しました。");
             #endregion
         }
 
         public string getMessage(string code)
         {
-            return ec[code];
+            return codelist[code];
         }
     }
 }

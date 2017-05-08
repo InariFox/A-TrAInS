@@ -24,7 +24,7 @@ namespace InariFox.TalkLibTester
             string target = lboxEnabled.SelectedItem.ToString();
             bool result = false;
 
-            if(td.setText(target, "おはよう新しい私。"))
+            if(td.setText(target, "こんにちは"))
             {
                 result = td.Play(target);
             }

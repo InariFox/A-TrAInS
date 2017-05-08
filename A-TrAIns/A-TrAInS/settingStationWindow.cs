@@ -12,14 +12,18 @@ namespace A_TrAInS
 {
     public partial class settingStationWindow : Form
     {
+        MesBox mb;
+
         public settingStationWindow()
         {
             InitializeComponent();
+            mb = new MesBox();
         }
         public settingStationWindow(DataTable dt)
         {
             InitializeComponent();
             dgvStations.DataSource = dt;
+            mb = new MesBox();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -42,6 +46,9 @@ namespace A_TrAInS
         {
             if (cboxRead.Checked){ dgvStations[2, dgvStations.CurrentRow.Index].Value = Properties.Resources.CanRead; }
             else { dgvStations[2, dgvStations.CurrentRow.Index].Value = Properties.Resources.CantRead; }
+
+            mb.setCode("OK001");
+            mb.showMessageBox(false);
         }
     }
 }
