@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using InariFox.TdmlLib.Properties;
+using System;
 using System.Data;
 using System.Xml;
 
@@ -39,11 +39,12 @@ namespace InariFox.TdmlLib
                     int st_type;
                     bool parse = int.TryParse(type.GetAttribute("type"), out st_type);
                     if (!parse){ st_type = -1; }
+                    XmlNode noread = type.Attributes["noread"];
 
                     DataRow dr = Station.NewRow();
                     dr["name"] = st_name;
                     dr["type"] = (st_type == 0) ? "主要駅" : "一般駅";
-                    dr["visible"] = "読み上げる";
+                    dr["visible"] = (noread == null) ? Resources.CanRead : Resources.CantRead;
 
                     Station.Rows.Add(dr);
                 }

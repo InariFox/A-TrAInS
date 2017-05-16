@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace A_TrAInS
@@ -33,7 +27,7 @@ namespace A_TrAInS
 
         private void dgvStations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(Properties.Resources.CanRead.Equals(dgvStations[2, e.RowIndex].Value))
+            if(InariFox.TdmlLib.Properties.Resources.CanRead.Equals(dgvStations[2, e.RowIndex].Value))
             {
                 cboxRead.Checked = true;
             } else
@@ -44,8 +38,8 @@ namespace A_TrAInS
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            if (cboxRead.Checked){ dgvStations[2, dgvStations.CurrentRow.Index].Value = Properties.Resources.CanRead; }
-            else { dgvStations[2, dgvStations.CurrentRow.Index].Value = Properties.Resources.CantRead; }
+            if (cboxRead.Checked){ dgvStations[2, dgvStations.CurrentRow.Index].Value = InariFox.TdmlLib.Properties.Resources.CanRead; }
+            else { dgvStations[2, dgvStations.CurrentRow.Index].Value = InariFox.TdmlLib.Properties.Resources.CantRead; }
 
             mb.setCode("OK001");
             mb.showMessageBox(false);
